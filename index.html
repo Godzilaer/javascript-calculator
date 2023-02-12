@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Javascript Calculator</title>
+
+<style>
+body{
+	text-align: center;
+	background-image: linear-gradient(to right, #3F91B8, #12B4FF, #3F91B8);
+}
+
+h1{
+	font-size: 48px;
+	font-family: courier new;
+	background-image: linear-gradient(to left, #5E61B3, #0008FF, #5E61B3);
+	border: 10px ridge #17A814;
+	border-radius: 16px;
+	margin-left: 250px;
+	margin-right: 250px;
+}
+
+p{
+	text-align: left;
+	font-size: 60px;
+	font-family: courier new;
+	font-weight: bold;
+	font-weight: bold;
+	background-color: #47A7EA;
+	border: 6px ridge #0046FF;
+	border-radius: 2px;
+	margin: 0px;
+	padding-top: 10px;
+	padding-left: 35px;
+	height: 140px;
+}
+
+button{
+	font-size: 35px;
+	font-family: helvetica;
+	font-weight: bold;
+	background-color: #3366D1;
+	border: 6px inset #0046FF;
+	border-radius: 10px;
+	width: 100px;
+	height: 72px;
+	margin: 3px;
+}
+
+button:hover{
+	background-color: #2B79BB;
+}
+
+button:active{
+	background-color: #16558A;
+}
+
+.calculator{
+	border: 10px outset #6D7D89;
+	background-color: #6D7D89;
+	width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.buttonsHolder{
+	border: 6px groove #0046FF;
+	position: relative;
+	height: 400px;
+}
+
+.buttons1{
+	border: 6px solid #969B5E;
+	width: 350px;
+}
+
+.buttons2{
+	border: 6px solid #969B5E;
+	width: 372px;
+	position: relative;
+	left: 356px;
+	bottom: 401.5px;
+}
+
+</style>
+</head>
+		
+<body>
+<h1>Javascript Calculator</h1>
+
+<div class="calculator">
+<p id="answer">0</p>
+<div class="buttonsHolder">
+
+<div class="buttons1">
+<button onclick="addToEquation('CLEARALL')">CA</button>
+<button onclick="addToEquation('CLEAR')">C</button>
+</br>
+<button onclick="addToEquation('7')">7</button>
+<button onclick="addToEquation('8')">8</button>
+<button onclick="addToEquation('9')">9</button>
+<button onclick="addToEquation('4')">4</button>
+<button onclick="addToEquation('5')">5</button>
+<button onclick="addToEquation('6')">6</button>
+<button onclick="addToEquation('1')">1</button>
+<button onclick="addToEquation('2')">2</button>
+<button onclick="addToEquation('3')">3</button>
+<button onclick="addToEquation('0')">0</button>
+<button onclick="addToEquation('.')">.</button>
+<button onclick="solve()" style="border-color: #2AC454; border-width: 10px">=</button>
+</div>
+<div class="buttons2">
+<button style="border-width: 8px; border-color: #2644A7" onclick="addToEquation('+')">+</button>
+<button style="border-width: 8px; border-color: #2644A7" onclick="addToEquation('-')">-</button>
+</br>
+<button style="border-width: 8px; border-color: #2644A7" onclick="addToEquation('x')">x</button>
+<button style="border-width: 8px; border-color: #2644A7" onclick="addToEquation('/')">/</button>
+</br>
+<button onclick="addToEquation('(')">(</button>
+<button onclick="addToEquation(')')">)</button>
+<button onclick="addToEquation('^')">^</button>
+<button onclick="addToEquation('√')">√</button>
+<button onclick="addToEquation('%')">%</button>
+<button onclick="addToEquation('π')">π</button>
+<button onclick="addToEquation('e')">E</button>
+</div>
+</div>
+
+<script>
+	var answer
+	var beforeAnswer = 0
+	
+	const answerTxt = document.getElementById("answer")
+	
+	function solve()
+	{
+		var equation = answerTxt.innerHTML
+		
+		if(beforeAnswer > 0)
+		{
+			return
+		}
+		
+		beforeAnswer = equation + " = "
+		
+		//Make x multiplication sign readable by function
+		equation = equation.replace(/x/g, "*")
+		//Make to the power of sign readable by function
+		equation = equation.replace(/\^/g, "**")
+		
+		//Catch error and display it
+		try
+		{ 
+			//Partially remove floating point error and evaluate equation
+			answer = Math.round(eval(equation) * 1000000)/1000000
+		}
+		catch
+		{
+			answer = "ERR"
+		}
+
+		if (answer == "NaN" || answer == "Infinity")
+		{
+			answer = "Inf"
+		}
+		
+		answerTxt.innerHTML = beforeAnswer + answer
+		beforeAnswer = beforeAnswer.length
+	}
+	
+	function addToEquation(charToAdd)
+	{
+		var txt = answerTxt.innerHTML
+		var addChar = true
+		
+		//if there is no more space dont allow any more input
+		if(txt.length == 16 && charToAdd != "CLEAR" && charToAdd != "CLEARALL")
+		{
+			return
+		}
+		
+		//If there is an equal sign remove it
+		if(beforeAnswer > 0)
+		{
+			txt = txt.slice(beforeAnswer, txt.length)
+			beforeAnswer = 0
+		}
+		
+		//Replace 0 and ERR
+		if((txt == "0" || txt == "ERR") && (!isNaN(charToAdd) || charToAdd == "π" || charToAdd == "-") && charToAdd != "0")
+		{
+			txt = ""
+		}
+		
+		if(charToAdd == "√")
+		{
+			beforeAnswer = "√" + txt + " = "
+			answerTxt.innerHTML = beforeAnswer + Math.round(Math.sqrt(txt) * 1000) / 1000
+			beforeAnswer = beforeAnswer.length
+			addChar = false
+		}
+		
+		if(charToAdd == "π")
+		{
+			charToAdd = "3.14"
+		}
+		
+		//Clear all
+		if(charToAdd == "CLEARALL")
+		{
+			answerTxt.innerHTML = "0"
+			addChar = false
+		}
+		
+		//Clear one
+		if(charToAdd == "CLEAR")
+		{
+			if(txt.length > 1)
+			{
+				answerTxt.innerHTML = txt.slice(0, txt.length-1)
+			}
+			else
+			{
+				answerTxt.innerHTML = "0"
+			}
+			addChar = false
+		}
+		
+		if(addChar)
+		{
+			answerTxt.innerHTML = txt + charToAdd
+		}
+	}
+</script>
+</body>
+</html>
+
+
