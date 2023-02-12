@@ -62,6 +62,11 @@ function addToEquation(charToAdd)
 	{
 		txt = txt.slice(beforeAnswer, txt.length)
 		beforeAnswer = 0
+		
+		if(charToAdd == "CLEAR")
+		{
+			charToAdd = ""
+		}
 	}
 	
 	//Replace 0 when there is nothing else
