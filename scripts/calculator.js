@@ -17,6 +17,8 @@ function solve()
 	
 	//Make x multiplication sign readable by function
 	equation = equation.replace(/x/g, "*")
+	//Make percent signs divide number by 100
+	equation = equation.replace(/%/g, "/100")
 	//Make to the power of sign readable by function
 	equation = equation.replace(/\^/g, "**")
 	
