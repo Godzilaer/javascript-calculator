@@ -57,6 +57,12 @@ function addToEquation(charToAdd)
 	//Show end marker
 	endMark.style.display = "inline"
 	
+	//Replace 0 when there is nothing else
+	if(txt == "0" && (!isNaN(charToAdd) || charToAdd == "π" || charToAdd == "-") && charToAdd != "0")
+	{
+		txt = ""
+	}
+	
 	//If there is an equal sign remove it
 	if(beforeAnswer > 0)
 	{
@@ -67,12 +73,6 @@ function addToEquation(charToAdd)
 		{
 			charToAdd = ""
 		}
-	}
-	
-	//Replace 0 when there is nothing else
-	if(txt == "0" && (!isNaN(charToAdd) || charToAdd == "π" || charToAdd == "-") && charToAdd != "0")
-	{
-		txt = ""
 	}
 	
 	//Make sure ERR and NaN dont become part of the equation
