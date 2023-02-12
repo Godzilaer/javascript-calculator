@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Javascript Calculator - Ethanos</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />	
+<link rel="icon" type="image/x-icon" href="images/favicon.png">
+</head>
+		
+<body>
+<h1>Javascript Calculator
+</br>
+<span style="font-size: 20px;">By: Ethanos</span>
+</h1>
+
+<div class="calculator">
+<p id="answer">0</p>
+<div class="buttonsHolder">
+<div class="buttons1">
+<button onclick="addToEquation('CLEARALL')">CA</button>
+<button onclick="addToEquation('CLEAR')">C</button>
+</br>
+<button onclick="addToEquation('7')">7</button>
+<button onclick="addToEquation('8')">8</button>
+<button onclick="addToEquation('9')">9</button>
+<button onclick="addToEquation('4')">4</button>
+<button onclick="addToEquation('5')">5</button>
+<button onclick="addToEquation('6')">6</button>
+<button onclick="addToEquation('1')">1</button>
+<button onclick="addToEquation('2')">2</button>
+<button onclick="addToEquation('3')">3</button>
+<button onclick="addToEquation('0')">0</button>
+<button onclick="addToEquation('.')">.</button>
+<button onclick="solve()" style="border-color: #2AC454; border-width: 10px">=</button>
+</div>
+<div class="buttons2">
+<button style="border-width: 8px; border-color: #2644A7" onclick="addToEquation('+')">+</button>
+<button style="border-width: 8px; border-color: #2644A7" onclick="addToEquation('-')">-</button>
+</br>
+<button style="border-width: 8px; border-color: #2644A7" onclick="addToEquation('x')">x</button>
+<button style="border-width: 8px; border-color: #2644A7" onclick="addToEquation('/')">/</button>
+</br>
+<button onclick="addToEquation('(')">(</button>
+<button onclick="addToEquation(')')">)</button>
+<button onclick="addToEquation('^')">^</button>
+<button onclick="addToEquation('√')">√</button>
+<button onclick="addToEquation('%')">%</button>
+<button onclick="addToEquation('π')">π</button>
+<button onclick="addToEquation('e+')">E</button>
+</div>
+</div>
+
+<div style="width: 0px; height: 0px;">
+<span class="endMark" id="endmark">|</span>
+</div>
+
+<script type="text/javascript" src="scripts/calculator.js"></script>
+
+</body>
+</html>
+
+

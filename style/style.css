@@ -1,0 +1,85 @@
+body{
+	text-align: center;
+	background-image: linear-gradient(to right, #3F91B8, #12B4FF, #3F91B8);
+}
+
+h1{
+	font-family: courier new;
+	font-size: 32px;
+	background-image: linear-gradient(to left, #5E61B3, #0008FF, #5E61B3);
+	border: 10px ridge #17A814;
+	border-radius: 16px;
+	margin-left: 250px;
+	margin-right: 250px;
+}
+
+p{
+	text-align: left;
+	font-size: 45px;
+	font-family: courier new;
+	font-weight: bold;
+	font-weight: bold;
+	background-color: #47A7EA;
+	border: 6px ridge #0046FF;
+	border-radius: 2px;
+	margin: 0px;
+	padding-top: 10px;
+	padding-left: 10px;
+	height: 100px;
+}
+
+button{
+	font-size: 35px;
+	font-family: helvetica;
+	font-weight: bold;
+	background-color: #3366D1;
+	border: 6px inset #0046FF;
+	border-radius: 10px;
+	width: 100px;
+	height: 72px;
+	margin: 3px;
+}
+
+button:hover{
+	background-color: #2B79BB;
+}
+
+button:active{
+	background-color: #16558A;
+}
+
+.calculator{
+	border: 10px outset #6D7D89;
+	background-color: #6D7D89;
+	width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.buttonsHolder{
+	border: 6px groove #0046FF;
+	position: relative;
+	height: 400px;
+}
+
+.buttons1{
+	border: 6px solid #969B5E;
+	width: 357px;
+}
+
+.buttons2{
+	border: 6px solid #969B5E;
+	border-style: solid solid solid none;
+	width: 372px;
+	position: relative;
+	left: 361px;
+	bottom: 401px;
+}
+
+.endMark{
+	font-size: 32px;
+	position: relative;
+	bottom: 515px;
+	left: 635px;
+	color: red;
+}
