@@ -1,1 +1,1 @@
-# javascript-calculator
+# godzilaer.github.io/javascript-calculator
