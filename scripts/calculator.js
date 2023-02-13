@@ -34,9 +34,9 @@ function solve()
 		beforeAnswer = ""
 	}
 
-	if (answer == "NaN" || answer == "Infinity")
+	if (answer == "NaN")
 	{
-		answer = "Inf"
+		answer = "Infinity"
 		beforeAnswer = ""
 	}
 	
@@ -77,10 +77,10 @@ function addToEquation(charToAdd)
 		}
 	}
 	
-	//Make sure ERR and NaN dont become part of the equation
-	if(txt == "ERR" || txt == "NaN")
+	//Make sure ERR, NaN and Infinity dont become part of the equation
+	if(txt == "ERR" || txt == "NaN" || txt == "Infinity")
 	{
-		txt = ""
+		txt = "0"
 	}
 	
 	//Solve square root
